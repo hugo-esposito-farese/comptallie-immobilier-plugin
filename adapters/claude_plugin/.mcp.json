@@ -2,7 +2,7 @@
   "mcpServers": {
     "comptallie": {
       "type": "http",
-      "url": "https://comptalliemcp-production.up.railway.app/mcp"
+      "url": "https://comptalliemcp-production.up.railway.app/mcp2"
     }
   }
 }
