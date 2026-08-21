@@ -1,0 +1,15 @@
+{
+  "name": "comptallie-plugins",
+  "description": "Plugins Comptallie — emballage (skills + connexion MCP) des agents Comptallie pour Claude.ai",
+  "owner": {
+    "name": "Hugo Esposito Farese",
+    "email": "hugo.esposito.farese.pro@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "comptallie",
+      "source": "./adapters/claude_plugin",
+      "description": "Julie, assistante de tri de mails — emballage (skill + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
+    }
+  ]
+}

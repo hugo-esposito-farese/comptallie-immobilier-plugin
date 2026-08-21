@@ -1,0 +1,9 @@
+{
+  "name": "comptallie",
+  "description": "Julie, assistante de tri de mails. Emballage pur : connecte le serveur MCP distant déjà en ligne (adapters/mcp_remote/server.py sur Railway) et charge le skill Julie via le mécanisme Plugins de Claude.ai, pour contourner le bug connu où Claude.ai ignore le champ \"instructions\" des serveurs MCP.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Hugo Esposito Farese",
+    "email": "hugo.esposito.farese.pro@gmail.com"
+  }
+}
