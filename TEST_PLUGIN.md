@@ -1,14 +1,16 @@
-# Test du plugin Comptallie — Julie via Skill
+# Test du plugin Comptallie — Julie et Méline via Skills
 
 > Ce repo est de l'emballage pur : `.claude-plugin/marketplace.json` +
 > `adapters/claude_plugin/` connectent le serveur MCP distant déjà en ligne
-> (hébergé séparément, dans le repo privé `Comptallie_MCP`) et chargent le
-> skill Julie via le mécanisme Plugins de Claude.ai. Aucune logique métier
-> ici — en particulier, `SKILL.md` ne contient volontairement AUCUN critère
-> de jugement substantiel (ce qui compte comme urgent, ce qui doit être
-> ignoré, comment moduler le ton) : ces critères vivent côté serveur privé
-> et sont récupérés à l'exécution via le tool `obtenir_criteres_tri`. C'est
-> pour ça que ce repo est public et l'autre ne l'est pas.
+> (hébergé séparément, dans le repo privé `Comptallie_MCP`) et chargent les
+> skills Julie et Méline via le mécanisme Plugins de Claude.ai. Aucune
+> logique métier ici — en particulier, le `SKILL.md` de Julie ne contient
+> volontairement AUCUN critère de jugement substantiel (ce qui compte comme
+> urgent, ce qui doit être ignoré, comment moduler le ton) : ces critères
+> vivent côté serveur privé et sont récupérés à l'exécution via le tool
+> `obtenir_criteres_tri`. C'est pour ça que ce repo est public et l'autre ne
+> l'est pas. Méline n'a pas d'équivalent (sa recherche est déterministe, pas
+> un jugement métier à protéger).
 
 ## 1. Le repo est déjà public et poussé
 
@@ -83,3 +85,31 @@ critères n'est jamais visible dans ce repo.
 
 Vérifier aussi qu'aucun mail n'est jamais envoyé, seulement des brouillons
 créés.
+
+## 6. Test simple — présentation de Méline
+
+Dans une nouvelle conversation Claude.ai, écrire :
+
+```
+appelle Méline
+```
+
+**Attendu** : une présentation chaleureuse en 1re personne ("Salut, je suis
+Méline, je peux rechercher des entreprises..."), avec les capacités listées,
+et une question de confirmation explicite à la fin.
+
+## 7. Test spécifique — recherche réelle
+
+```
+Méline, trouve-moi des entreprises créées en Île-de-France ces 30 derniers
+jours
+```
+
+**Attendu** : Méline appelle `rechercher_entreprises` avec une zone (région
+Île-de-France traduite en code INSEE `11`) et une période, sans jamais
+demander à l'utilisateur de préciser un code technique. Si peu ou aucun
+résultat n'est trouvé, elle doit l'expliquer simplement (l'API publique ne
+trie pas par date de création, donc une recherche par période sur une zone
+large peut manquer des créations récentes) — jamais comme si elle avait
+échoué ou planté. Comme pour Julie : le mot "Claude" ne doit jamais
+apparaître.
