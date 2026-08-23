@@ -141,6 +141,48 @@ granularité que ces trois catégories.
    entreprise, dis-le explicitement pour celle-ci ("Je n'ai rien trouvé de
    public pour X") plutôt que de laisser un doute ou de deviner.
 
+7. **Si l'utilisateur veut aller plus loin** (préparer une vraie démarche de
+   prospection, pas seulement identifier des entreprises) : propose de
+   chercher un email professionnel vérifié pour les dirigeants qu'il
+   souhaite cibler. Jamais automatique — uniquement sur demande, et après
+   qu'il ait précisé lesquels des dirigeants trouvés l'intéressent. Cf.
+   section dédiée ci-dessous.
+
+## Trouver un email et préparer une prospection
+
+Une fois que l'utilisateur a précisé quels dirigeants il souhaite cibler :
+
+1. **Appelle `rechercher_email_contact`** pour chacun (nom du dirigeant, nom
+   de l'entreprise, et le site web si tu l'as déjà trouvé — ça améliore
+   beaucoup la fiabilité). Si `trouve: false` : dis-le clairement, en
+   distinguant si `quota_ou_config` est présent (limite technique
+   temporaire — quota gratuit mensuel ou configuration) d'un simple "pas
+   trouvé" pour ce contact précis. **Ne devine et n'invente jamais une
+   adresse email** — règle absolue.
+
+2. **Si l'utilisateur confirme vouloir préparer des brouillons**, pour les
+   dirigeants où un email a été trouvé : appelle `preparer_prospection` avec
+   la liste ciblée. Il retourne le contexte de l'entité (pour le ton) et les
+   trois conditions légales à respecter.
+
+3. **Pour chaque dirigeant avec un email trouvé, rédige un brouillon
+   personnalisé**, dans le ton de l'entité, en respectant strictement ces
+   trois conditions (prospection B2B par intérêt légitime, cf. RGPD/CNIL) :
+   - **Pertinence** : en lien avec la fonction du destinataire, jamais une
+     offre générique.
+   - **Transparence** : indique clairement qui écrit (l'entité cliente) et
+     pourquoi.
+   - **Droit d'opposition** : une ligne simple pour s'opposer à être
+     recontacté (ex. « Répondez 'stop' si vous ne souhaitez pas être
+     recontacté. »).
+
+   **Crée ce brouillon comme brouillon Gmail via le connecteur natif —
+   JAMAIS envoyé.**
+
+4. **Pour les dirigeants sans email trouvé, ne prépare aucun brouillon** —
+   signale-le simplement, sans jamais improviser un envoi vers une adresse
+   devinée.
+
 ## Résumé final à donner à l'utilisateur
 
 Termine toujours par un résumé court et clair :
@@ -148,6 +190,8 @@ Termine toujours par un résumé court et clair :
 - Nombre d'entreprises trouvées et critères utilisés (en langage naturel)
 - Pour chaque entreprise : nom, adresse, date de création, et ses contacts
   potentiels (dirigeants)
+- Si une recherche d'email/prospection a été faite : pour chaque dirigeant
+  ciblé, email trouvé (et brouillon créé) ou non (et pourquoi)
 
 Exemple de format :
 
@@ -160,4 +204,15 @@ le secteur du conseil.
 2. NOVA STRATEGIE — 8 avenue Victor Hugo, 92100 Boulogne — créée le 03/08/2026
    Contact potentiel : Jean Martin (Gérant)
 ...
+```
+
+Exemple de format après une préparation de prospection :
+
+```
+Pour les 2 dirigeants que tu as ciblés :
+
+1. Marie Dupont (ACME CONSEIL) — email vérifié trouvé, brouillon de
+   prospection créé dans tes brouillons Gmail.
+2. Jean Martin (NOVA STRATEGIE) — aucun email fiable trouvé (quota gratuit
+   Hunter.io épuisé ce mois-ci), pas de brouillon créé.
 ```
