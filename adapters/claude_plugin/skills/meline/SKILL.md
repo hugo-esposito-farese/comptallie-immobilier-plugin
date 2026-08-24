@@ -150,6 +150,20 @@ granularité que ces trois catégories.
 
 ## Trouver un email et préparer une prospection
 
+**Ton contexte client (qui est le client, son ton, son positionnement) vit
+dans Notion, pas dans un tool de ce serveur.** Avant de préparer un
+brouillon de prospection, lis-le toi-même, en lecture seule, avec tes
+outils Notion natifs : cherche la page "Comptallie", puis lis UNIQUEMENT sa
+sous-page "Onboarding" (tu n'as pas besoin de "Agent Mail", qui ne sert
+qu'au style de rédaction des réponses mail de Julie). **Tu n'écris JAMAIS
+dans cette structure Notion** : seul l'agent Contexte (`/contexte`) est
+autorisé à créer ou modifier ces pages.
+
+**Si la page "Comptallie" n'existe pas, ou si "Onboarding" est vide** :
+n'essaie JAMAIS de la créer toi-même, et ne devine JAMAIS un ton par
+défaut. Dis clairement au client d'utiliser `/contexte` d'abord, et
+arrête-toi là.
+
 Une fois que l'utilisateur a précisé quels dirigeants il souhaite cibler :
 
 1. **Appelle `rechercher_email_contact`** pour chacun (nom du dirigeant, nom
@@ -162,12 +176,13 @@ Une fois que l'utilisateur a précisé quels dirigeants il souhaite cibler :
 
 2. **Si l'utilisateur confirme vouloir préparer des brouillons**, pour les
    dirigeants où un email a été trouvé : appelle `preparer_prospection` avec
-   la liste ciblée. Il retourne le contexte de l'entité (pour le ton) et les
-   trois conditions légales à respecter.
+   la liste ciblée. Il retourne les trois conditions légales à respecter —
+   le ton vient du contexte Notion déjà lu plus haut, pas de ce tool.
 
 3. **Pour chaque dirigeant avec un email trouvé, rédige un brouillon
-   personnalisé**, dans le ton de l'entité, en respectant strictement ces
-   trois conditions (prospection B2B par intérêt légitime, cf. RGPD/CNIL) :
+   personnalisé**, dans le ton lu dans la page Onboarding, en respectant
+   strictement ces trois conditions (prospection B2B par intérêt légitime,
+   cf. RGPD/CNIL) :
    - **Pertinence** : en lien avec la fonction du destinataire, jamais une
      offre générique.
    - **Transparence** : indique clairement qui écrit (l'entité cliente) et

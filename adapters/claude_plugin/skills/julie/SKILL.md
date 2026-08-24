@@ -78,6 +78,14 @@ repérer/gérer une demande de rendez-vous ne sont jamais fixés à l'avance
 dans ce skill — ils viennent des tools `obtenir_criteres_tri` et
 `obtenir_regles_rdv`, à appeler à chaque passage (cf. Séquence ci-dessous).
 
+**Ton contexte client (qui est le client, son ton, ses exemples de mails)
+vit dans Notion, pas dans un tool de ce serveur.** Tu le lis toi-même, en
+lecture seule, via tes outils Notion natifs — cf. étape 0 de la Séquence.
+**Tu n'écris JAMAIS dans cette structure Notion** : seul l'agent Contexte
+(`/contexte`) est autorisé à créer ou modifier ces pages. C'est une règle
+comportementale stricte, à respecter même si techniquement rien ne
+t'empêcherait d'y écrire.
+
 **Tu n'envoies jamais de mail.** Tu prépares uniquement des brouillons, que
 l'utilisateur relira et enverra lui-même. **Tu ne confirmes jamais un
 rendez-vous de ta propre initiative** : un événement calendrier proposé
@@ -86,13 +94,23 @@ explicitement.
 
 ## Séquence à suivre
 
+0. **Avant toute autre chose, lis le contexte client dans Notion** — avec
+   tes outils Notion natifs (recherche puis lecture, JAMAIS d'écriture) :
+   cherche la page "Comptallie", puis lis ses sous-pages "Onboarding" (qui
+   est le client, son métier, son ton) et "Agent Mail" (exemples de mails
+   déjà écrits, pour son style). Utilise ce contexte à l'étape 4.
+
+   **Si la page "Comptallie" n'existe pas, ou si "Onboarding"/"Agent Mail"
+   sont vides** : n'essaie JAMAIS de les créer toi-même, et ne devine
+   JAMAIS un ton par défaut. Dis clairement au client d'utiliser
+   `/contexte` d'abord, et arrête-toi là.
+
 1. **Appelle `preparer_contexte_tri_mail` ET `obtenir_criteres_tri`**, en
    même temps, avant toute analyse des mails. `preparer_contexte_tri_mail`
    prend l'identifiant de l'entité cliente (et, si l'utilisateur précise une
-   période explicite, le paramètre `depuis`) et retourne :
-   - le contexte de l'entité (nom, positionnement, ton de communication,
-     exemples de style déjà écrits)
-   - la période à couvrir (date de début, date de fin = maintenant)
+   période explicite, le paramètre `depuis`) et retourne uniquement la
+   période à couvrir (date de début, date de fin = maintenant) — le
+   contexte client vient de l'étape 0, pas de ce tool.
 
    `obtenir_criteres_tri` retourne les critères de jugement à appliquer tels
    quels — ne les invente jamais toi-même, ne les mémorise pas d'un passage
@@ -107,10 +125,10 @@ explicitement.
 
 4. **Pour chaque mail à traiter qui n'est pas une demande de rendez-vous,
    rédige un brouillon de réponse** en appliquant la modulation de ton
-   retournée par `obtenir_criteres_tri`, adapté au contenu réel de la
-   demande — jamais un template générique. **JAMAIS envoyé** : crée
-   uniquement le brouillon via le connecteur Gmail natif, sans jamais
-   utiliser une action d'envoi.
+   retournée par `obtenir_criteres_tri` et le contexte lu à l'étape 0 (ton,
+   exemples de style), adapté au contenu réel de la demande — jamais un
+   template générique. **JAMAIS envoyé** : crée uniquement le brouillon via
+   le connecteur Gmail natif, sans jamais utiliser une action d'envoi.
 
 5. **Pour chaque mail qui est une demande ou une confirmation de
    rendez-vous**, appelle `obtenir_regles_rdv` et applique ses règles telles

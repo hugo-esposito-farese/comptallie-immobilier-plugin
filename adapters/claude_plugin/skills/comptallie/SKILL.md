@@ -27,6 +27,7 @@ cet esprit :
 
 Chaque assistant se lance avec sa propre commande :
 
+- /contexte — configurer et compléter tes informations de base (à faire en premier)
 - /julie — trier tes mails et préparer des brouillons de réponse
 - /meline — rechercher des entreprises et identifier des contacts potentiels
 

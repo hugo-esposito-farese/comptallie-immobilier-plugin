@@ -9,7 +9,7 @@
     {
       "name": "comptallie",
       "source": "./adapters/claude_plugin",
-      "description": "Julie (tri de mails) et Méline (prospection d'entreprises) — emballage (skills + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
+      "description": "Contexte (mémoire partagée), Julie (tri de mails) et Méline (prospection d'entreprises) — emballage (skills + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
     }
   ]
 }
