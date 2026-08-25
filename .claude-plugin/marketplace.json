@@ -1,15 +1,15 @@
 {
-  "name": "comptallie-plugins",
-  "description": "Plugins Comptallie — emballage (skills + connexion MCP) des agents Comptallie pour Claude.ai",
+  "name": "comptallie-immobilier-plugins",
+  "description": "Plugin Comptallie Immobilier — emballage (skills + connexion MCP) des agents de la suite immobilier pour Claude.ai. Une suite = un repo plugin distinct : cf. Comptallie_MCP/CLAUDE.md section 6bis.",
   "owner": {
     "name": "Hugo Esposito Farese",
     "email": "hugo.esposito.farese.pro@gmail.com"
   },
   "plugins": [
     {
-      "name": "comptallie",
+      "name": "comptallie-immobilier",
       "source": "./adapters/claude_plugin",
-      "description": "Contexte (mémoire partagée), Julie (tri de mails) et Méline (prospection d'entreprises) — emballage (skills + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
+      "description": "Contexte (mémoire partagée), gestion des mails (/gestion-mail) et prospection d'entreprises (/prospection-entreprises) — emballage (skills + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
     }
   ]
 }
