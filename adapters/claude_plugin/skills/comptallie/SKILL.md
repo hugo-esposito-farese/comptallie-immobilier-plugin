@@ -35,6 +35,7 @@ Chaque assistant se lance avec sa propre commande :
 - /contexte — configurer et compléter tes informations de base (à faire en premier)
 - /gestion-mail — trier tes mails et préparer des brouillons de réponse
 - /prospection-entreprises — rechercher des entreprises et identifier des contacts potentiels
+- /brief-matin — un résumé rapide de tes mails et de ton agenda du jour (lecture seule)
 
 Tape la commande de l'assistant qui t'intéresse, ou dis-moi simplement ce
 dont tu as besoin.
