@@ -18,9 +18,8 @@ Le mécanisme Plugins de Claude.ai (Customize → Plugins → Add from repositor
 exige un repo GitHub public par plugin. **Chaque suite commerciale a son
 propre repo plugin public, cloisonné** : un client qui installe le plugin
 d'une suite ne doit voir apparaître que les commandes de cette suite —
-jamais celles d'une autre. Ce repo (`comptallie-immobilier-plugin`, cf. note
-sur le renommage GitHub en attente dans `TEST_PLUGIN.md`) n'expose donc QUE
-les skills de la suite immobilier.
+jamais celles d'une autre. Ce repo (`comptallie-immobilier-plugin`) n'expose donc QUE les skills de la
+suite immobilier.
 
 **Toute future suite (ex. "comptable") aura son propre repo plugin public
 séparé**, généré à partir du même `core/` privé mais n'exposant que le

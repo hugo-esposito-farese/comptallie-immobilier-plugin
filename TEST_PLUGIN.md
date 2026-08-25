@@ -15,13 +15,11 @@
 
 ## 1. Le repo est déjà public et poussé
 
-Rien à faire ici — ce repo (`hugo-esposito-farese/comptallie-plugin`) est
-déjà public et à jour sur `main`. **Renommage GitHub en attente** : le
-contenu correspond désormais à la suite immobilier uniquement (cf.
-Comptallie_MCP/CLAUDE.md section 6bis) — le nom du repo lui-même
-(`comptallie-plugin`) doit être changé en `comptallie-immobilier-plugin`
-manuellement (Settings → General → Repository name), GitHub redirige
-automatiquement l'ancienne URL après renommage.
+Rien à faire ici — ce repo, renommé `hugo-esposito-farese/comptallie-immobilier-plugin`
+(le contenu correspond désormais à la suite immobilier uniquement, cf.
+Comptallie_MCP/CLAUDE.md section 6bis), est déjà public et à jour sur
+`main`. L'ancienne URL `comptallie-plugin` continue de fonctionner par
+redirection automatique GitHub.
 
 ## 2. Ajouter le plugin dans Claude.ai
 
@@ -29,10 +27,8 @@ automatiquement l'ancienne URL après renommage.
    gauche) → onglet **Plugins**.
 2. Dans la section **Personal plugins**, cliquer sur **"+"**, puis
    **"Add marketplace"**.
-3. Choisir **"Add from a repository"** et coller l'URL de CE repo (utiliser
-   l'URL actuelle tant que le renommage GitHub n'est pas fait, cf. section 1
-   — l'ancienne URL continuera de fonctionner par redirection après) :
-   `https://github.com/hugo-esposito-farese/comptallie-plugin`
+3. Choisir **"Add from a repository"** et coller l'URL de CE repo :
+   `https://github.com/hugo-esposito-farese/comptallie-immobilier-plugin`
 4. Une fois la marketplace `comptallie-immobilier-plugins` ajoutée,
    installer le plugin `comptallie-immobilier` qui y apparaît.
 5. Si l'installation indique `Run /reload-plugins to activate.`, c'est une
