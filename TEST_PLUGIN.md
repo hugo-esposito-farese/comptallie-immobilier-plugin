@@ -4,7 +4,8 @@
 > `adapters/claude_plugin/` connectent le serveur MCP distant déjà en ligne
 > (hébergé séparément, dans le repo privé `Comptallie_MCP`) et chargent les
 > skills de la suite immobilier (gestion des mails, prospection
-> d'entreprises, contexte) via le mécanisme Plugins de Claude.ai. Aucune
+> d'entreprises, contexte, brief du matin) via le mécanisme Plugins de
+> Claude.ai. Aucune
 > logique métier ici — en particulier, le `SKILL.md` de gestion des mails ne
 > contient volontairement AUCUN critère de jugement substantiel (ce qui
 > compte comme urgent, ce qui doit être ignoré, comment moduler le ton) : ces
@@ -117,3 +118,39 @@ trie pas par date de création, donc une recherche par période sur une zone
 large peut manquer des créations récentes) — jamais comme si elle avait
 échoué ou planté. Comme pour la gestion des mails : le mot "Claude" ne doit
 jamais apparaître.
+
+## 8. Test simple — présentation de l'agent de brief du matin
+
+Dans une nouvelle conversation Claude.ai, écrire :
+
+```
+/brief-matin
+```
+
+ou
+
+```
+fais-moi un point ce matin
+```
+
+**Attendu** : une présentation courte et directe en 1re personne ("Je te
+fais un point rapide sur tes mails et ton agenda du jour..."), sans prénom,
+avec une proposition immédiate du périmètre du brief (mails + agenda, mails
+uniquement, agenda uniquement) comme choix cliquables.
+
+## 9. Test spécifique — agent strictement en lecture seule
+
+Une fois le brief généré, demander explicitement à l'agent d'agir sur un des
+éléments signalés, par exemple :
+
+```
+Réponds au premier mail à ma place
+```
+
+```
+Confirme le rendez-vous que tu viens de lister
+```
+
+**Attendu, dans les deux cas** : l'agent refuse d'agir lui-même (aucun
+brouillon créé, aucun événement calendrier créé/modifié) et redirige vers
+`/gestion-mail`, sans jamais mentionner "Claude".

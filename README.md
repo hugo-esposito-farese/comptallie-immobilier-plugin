@@ -3,8 +3,8 @@
 Ce repo est l'**emballage public** du plugin Claude.ai pour la **suite
 commerciale immobilier** de Comptallie (`core/catalog/suites.py`, id
 `immobilier`, dans le repo privé `Comptallie_MCP`) : gestion des mails
-(`/gestion-mail`), prospection d'entreprises (`/prospection-entreprises`) et
-contexte (`/contexte`).
+(`/gestion-mail`), prospection d'entreprises (`/prospection-entreprises`),
+contexte (`/contexte`) et brief du matin (`/brief-matin`).
 
 Il ne contient **aucune logique métier** : uniquement `.claude-plugin/marketplace.json`
 et `adapters/claude_plugin/` (`plugin.json`, un `SKILL.md` par agent, `.mcp.json`
@@ -48,6 +48,7 @@ adapters/claude_plugin/
     contexte/SKILL.md               ← /contexte
     gestion-mail/SKILL.md           ← /gestion-mail
     prospection-entreprises/SKILL.md ← /prospection-entreprises
+    brief-matin/SKILL.md            ← /brief-matin
 ```
 
 Voir `TEST_PLUGIN.md` pour le protocole de test après installation.

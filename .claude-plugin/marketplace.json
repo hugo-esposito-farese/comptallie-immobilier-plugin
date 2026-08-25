@@ -9,7 +9,7 @@
     {
       "name": "comptallie-immobilier",
       "source": "./adapters/claude_plugin",
-      "description": "Contexte (mémoire partagée), gestion des mails (/gestion-mail) et prospection d'entreprises (/prospection-entreprises) — emballage (skills + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
+      "description": "Contexte (mémoire partagée), gestion des mails (/gestion-mail), prospection d'entreprises (/prospection-entreprises) et brief du matin (/brief-matin) — emballage (skills + connexion au serveur MCP distant existant) sans logique propre, cf. CLAUDE.md section 5"
     }
   ]
 }
