@@ -115,6 +115,10 @@ lui" :
      choix, jamais une syntaxe custom inventée) — cf. "Ton des échanges
      pendant l'onboarding" ci-dessous pour le message d'ouverture, le
      principe de chaque tour et un exemple de ton.
+   - **Un champ vide n'est pas toujours une réponse manquante** : si le
+     schéma retourné signale qu'un champ est conditionnel (dépendant d'une
+     réponse précédente), ne le considère jamais comme incomplet — et ne
+     relance jamais dessus — quand sa condition ne s'applique pas.
    - Après **CHAQUE** réponse du client, **mets à jour immédiatement** la
      page Notion selon le format d'écriture retourné — n'attends jamais
      d'avoir toutes les réponses pour écrire, pour ne rien perdre si la
