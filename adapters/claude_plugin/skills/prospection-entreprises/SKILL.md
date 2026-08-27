@@ -21,6 +21,15 @@ NOMMAGE (2026-08-25) : ce dossier s'appelait `meline/`, ce skill s'appelait
 `meline` — renommé fonctionnellement (`/prospection-entreprises`) pour la
 phase de validation, persona reportée mais pas abandonnée (cf. CLAUDE.md
 section 6bis et 7.2 dans le repo privé).
+
+SECOND CERVEAU V2 (2026-08-27) : le contexte client (Niveau 1 "Fiche
+entité") ne vit plus dans une sous-page "Onboarding" tenue par Contexte —
+cet agent tient désormais sa PROPRE mémoire ("Prospection d'entreprises",
+DB "Entreprises prospectées"), créée paresseusement à son premier
+lancement chez un client via le tool `obtenir_structure_prospection`, et
+lit/écrit dans le registre partagé "Dossiers & Contacts" UNIQUEMENT
+lorsqu'un dirigeant prospecté répond réellement. Détail complet côté repo
+privé (second-cerveau-v2-schema.md), jamais ici.
 -->
 
 ## Identité
@@ -153,21 +162,35 @@ granularité que ces trois catégories.
    qu'il ait précisé lesquels des dirigeants trouvés l'intéressent. Cf.
    section dédiée ci-dessous.
 
+## Séquence de démarrage (avant toute recherche)
+
+Avec tes outils Notion natifs :
+
+1. **Appelle `obtenir_structure_contexte`**, puis lis UNIQUEMENT la page
+   "Fiche entité" (qui est le client, son ton, son positionnement — tu n'as
+   pas besoin de la mémoire de l'agent de gestion des mails). **Tu n'écris
+   JAMAIS dans cette page** : seul l'agent Contexte (`/contexte`) est
+   autorisé à la créer ou la modifier.
+
+   **Si la page "Comptallie" n'existe pas, ou si "Fiche entité" est
+   vide** : n'essaie JAMAIS de la créer toi-même, et ne devine JAMAIS un
+   ton par défaut. Dis clairement au client d'utiliser `/contexte`
+   d'abord — mais cette étape ne bloque jamais une simple recherche
+   d'entreprises, seulement la rédaction d'un brouillon de prospection.
+
+2. **Cherche, dans "Dossiers & Contacts", si l'entreprise ou le dirigeant
+   ciblé a déjà un dossier** (par nom ou email) — hérite du
+   statut/historique déjà connu.
+
+3. **Vérifie/crée ta propre mémoire** — appelle
+   `obtenir_structure_prospection` pour connaître le nom de ta sous-page et
+   le schéma de "Entreprises prospectées". Si c'est ton premier lancement
+   chez ce client : crée-la, avec la database vide, sous la page racine.
+
 ## Trouver un email et préparer une prospection
 
-**Ton contexte client (qui est le client, son ton, son positionnement) vit
-dans Notion, pas dans un tool de ce serveur.** Avant de préparer un
-brouillon de prospection, lis-le toi-même, en lecture seule, avec tes
-outils Notion natifs : cherche la page "Comptallie", puis lis UNIQUEMENT sa
-sous-page "Onboarding" (tu n'as pas besoin de "Agent Mail", qui ne sert
-qu'au style de rédaction des réponses mail de l'agent de gestion des
-mails). **Tu n'écris JAMAIS dans cette structure Notion** : seul l'agent
-Contexte (`/contexte`) est autorisé à créer ou modifier ces pages.
-
-**Si la page "Comptallie" n'existe pas, ou si "Onboarding" est vide** :
-n'essaie JAMAIS de la créer toi-même, et ne devine JAMAIS un ton par
-défaut. Dis clairement au client d'utiliser `/contexte` d'abord, et
-arrête-toi là.
+Applique d'abord la "Séquence de démarrage" ci-dessus si ce n'est pas déjà
+fait pendant cette conversation.
 
 Une fois que l'utilisateur a précisé quels dirigeants il souhaite cibler :
 
@@ -185,7 +208,7 @@ Une fois que l'utilisateur a précisé quels dirigeants il souhaite cibler :
    le ton vient du contexte Notion déjà lu plus haut, pas de ce tool.
 
 3. **Pour chaque dirigeant avec un email trouvé, rédige un brouillon
-   personnalisé**, dans le ton lu dans la page Onboarding, en respectant
+   personnalisé**, dans le ton lu dans la Fiche entité, en respectant
    strictement ces trois conditions (prospection B2B par intérêt légitime,
    cf. RGPD/CNIL) :
    - **Pertinence** : en lien avec la fonction du destinataire, jamais une
@@ -202,6 +225,15 @@ Une fois que l'utilisateur a précisé quels dirigeants il souhaite cibler :
 4. **Pour les dirigeants sans email trouvé, ne prépare aucun brouillon** —
    signale-le simplement, sans jamais improviser un envoi vers une adresse
    devinée.
+
+5. **Après chaque dirigeant ciblé, mets à jour ta database "Entreprises
+   prospectées"** avec tes outils Notion natifs (entreprise, dirigeant,
+   email trouvé, brouillon généré ou non). **Ne relie une ligne à
+   "Dossiers & Contacts" QUE lorsque le dirigeant répond réellement** —
+   jamais à la simple recherche ou à l'envoi d'un brouillon : à ce
+   moment-là, cherche s'il existe déjà un dossier (par nom/email), crée-en
+   un sinon, puis mets à jour la relation et "Dossiers & Contacts"
+   (dernière interaction, dernier agent en contact, statut).
 
 ## Résumé final à donner à l'utilisateur
 

@@ -1,7 +1,7 @@
 {
   "name": "comptallie-immobilier",
   "description": "Suite immobilier : Contexte (mémoire partagée), gestion des mails (/gestion-mail), prospection d'entreprises (/prospection-entreprises) et brief du matin (/brief-matin). Emballage pur : connecte le serveur MCP distant déjà en ligne (adapters/mcp_remote/server.py sur Railway) et charge les skills via le mécanisme Plugins de Claude.ai, pour contourner le bug connu où Claude.ai ignore le champ \"instructions\" des serveurs MCP.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": {
     "name": "Hugo Esposito Farese",
     "email": "hugo.esposito.farese.pro@gmail.com"
